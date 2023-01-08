@@ -3,24 +3,24 @@ import Editor from './Editor'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 function App() {
-  const [html, setHtml] = useLocalStorage('html', '')
-  const [css, setCss] = useLocalStorage('css', '')
-  const [js, setJs] = useLocalStorage('js', '')
+  const [htmlJSX, setHtmlJSX] = useLocalStorage('html', '')
+  const [cssJSX, setCssJSX] = useLocalStorage('css', '')
+  const [jsJSX, setJsJSX] = useLocalStorage('js', '')
   const [srcDoc, setSrcDoc] = useState('')
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
         <html>
-          <body>${html}</body>
-          <style>${css}</style>
-          <script>${js}</script>
+          <body>${htmlJSX}</body>
+          <style>${cssJSX}</style>
+          <script>${jsJSX}</script>
         </html>
       `)
-    }, 250)
+    }, 250);
 
     return () => clearTimeout(timeout)
-  }, [html, css, js])
+  }, [htmlJSX, cssJSX, jsJSX]);
 
   return (
     <>
@@ -28,20 +28,20 @@ function App() {
         <Editor
           language="xml"
           displayName="HTML"
-          value={html}
-          onChange={setHtml}
+          value={htmlJSX}
+          onChange={setHtmlJSX}
         />
         <Editor
           language="css"
           displayName="CSS"
-          value={css}
-          onChange={setCss}
+          value={cssJSX}
+          onChange={setCssJSX}
         />
         <Editor
           language="javascript"
           displayName="JS"
-          value={js}
-          onChange={setJs}
+          value={jsJSX}
+          onChange={setJsJSX}
         />
       </div>
       <div className="pane">
